@@ -18,6 +18,11 @@ from company_607 c left join orders_607 o
 on c.com_id = o.com_id
 where c.name='red');
 
+select s.name from salesperson_607 s
+where s.sales_id not in (select o.sales_id
+from company_607 c inner join orders_607 o
+on c.com_id = o.com_id
+where c.name='red');
 
 
           
