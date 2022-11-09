@@ -19,7 +19,9 @@ select seller_name
 from Seller_1607 where seller_id not in ( select distinct(seller_id) from cte)
 
 
-
+select seller_name from Seller_1607 where seller_id not in 
+(select distinct(seller_id) from Orders_1607
+where year(sale_date)=2020)
 
 
 
