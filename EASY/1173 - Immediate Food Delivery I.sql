@@ -9,8 +9,17 @@ from Delivery_1173 d1,
 					  where (order_date=customer_pref_delivery_date))d2;
 
 
-
-
-
+Select round(100*d2.immediate_order/count(d1.delivery_id), 2) as immediate_percentage
+from Delivery_1173 d1,  
+                     (select count(delivery_date) as immediate_order 
+                      from Delivery_1173 
+					  where (order_date=customer_pref_delivery_date))d2;
+					  
+					  
+Select round(100*d2.immediate_order/count(d1.delivery_id), 2) as immediate_percentage
+from Delivery_1173 d1,  
+                     (select count(*) as immediate_order 
+                      from Delivery_1173 
+					  where (order_date=customer_pref_delivery_date))d2;
 
 
