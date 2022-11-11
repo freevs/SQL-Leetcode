@@ -7,10 +7,6 @@ insert into company_607(com_id, name, city) values(1, 'red', 'Boston'), (2, 'ora
 create table orders_607(order_id int, order_date date, com_id int, sales_id int, amount double);
 insert into orders_607(order_id, order_date, com_id, sales_id, amount) values(1, '2014-01-01', 3, 4, 100000), (2, '2014-02-01', 4, 5, 5000), (3, '2014-03-01', 1, 1, 50000), (4, '2014-04-01', 1, 4, 25000);
 
-select s.name from salesperson_607 s
-where s.sales_id not in
-(select sales_id from orders_607
-where com_id =1);
 
 select s.name from salesperson_607 s
 where s.sales_id not in (select o.sales_id
