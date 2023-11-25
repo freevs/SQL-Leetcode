@@ -15,7 +15,11 @@ VALUES
   ('2020-05-04','apples',15),
   ('2020-05-04','oranges',16);
   
-select sale_date, sum(if(fruit='apples', sold_num, -sold_num))
-from sales_1445
-group by sale_date;
-  
+with cte as
+(select * from sales_1445 order by sale_date, fruit),
+cte2 as
+(select *, LEAD(sold_num) OVER(PARTITION BY sale_date) as orange_num from cte)
+Select sale_date, (sold_num-orange_num) as diff
+from cte2
+where orange_num IS NOT NULL
+order by sale_date
