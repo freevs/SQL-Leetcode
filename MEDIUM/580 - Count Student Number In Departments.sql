@@ -22,10 +22,4 @@ select dept_name, count(student_id) as student_number
 from student_580 e right join dep_548 d
 on e.dept_id = d.dept_id
 group by d.dept_id;
-
-
-  
-  
-  
-  
   
