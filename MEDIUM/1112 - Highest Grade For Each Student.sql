@@ -23,9 +23,3 @@ where grade=max_grade
 group by student_id
 order by student_id;
  
-
-Select *, MAX(grade) OVER(PARTITION BY student_id) as max_grade from Enrollments_1112
-
-
-
-
