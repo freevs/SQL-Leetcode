@@ -3,6 +3,8 @@ insert into cust_order(order_number, customer_number, order_date, required_date,
                                                                                                               (4, 3, '2017-04-18', '2017-04-28', '2017-04-25', 'Closed');
                                                                                                               
 
+
+1. /*It is guaranteed that exactly one customer will have placed more orders than any other customer.*/
 select customer_number
 from cust_order
 group by customer_number
@@ -14,6 +16,18 @@ select customer_number
 from cust_order
 group by customer_number
 having count(customer_number)>1;
+
+2. /*What if more than one customer has the largest number of orders, can you find all the customer_number in this case?*/
+with cte as 
+(select customer_number, count(order_number) as NumOrd
+from cust_order
+group by customer_number)
+
+select customer_number from cte where NumOrd=(Select max(NumOrd) from cte)
+
+
+
+
 
 
 
