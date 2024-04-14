@@ -15,11 +15,10 @@ VALUES
   ('2020-05-04','apples',15),
   ('2020-05-04','oranges',16);
   
-with cte as
-(select * from sales_1445 order by sale_date, fruit),
-cte2 as
-(select *, LEAD(sold_num) OVER(PARTITION BY sale_date) as orange_num from cte)
-Select sale_date, (sold_num-orange_num) as diff
-from cte2
-where orange_num IS NOT NULL
-order by sale_date
+WITH cte AS (
+    SELECT *, LEAD(sold_num) OVER (PARTITION BY sale_date ORDER BY sale_date, fruit) AS orange_num
+    FROM sales_1445
+)
+SELECT sale_date, (sold_num - orange_num) AS diff FROM cte
+WHERE orange_num IS NOT NULL
+ORDER BY sale_date;
