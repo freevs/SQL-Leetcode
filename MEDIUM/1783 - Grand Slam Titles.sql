@@ -35,7 +35,7 @@ cte2 AS (
 )
 SELECT c.id, p.Players, c.grand_slams_count
 FROM cte2 c
-LEFT JOIN Players_1783 p ON c.id = p.id;
+INNER JOIN Players_1783 p ON c.id = p.id;
 
 
 
