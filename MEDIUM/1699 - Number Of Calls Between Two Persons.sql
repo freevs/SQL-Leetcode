@@ -19,6 +19,6 @@ with cte as
 case when from_id <to_id then to_id else from_id end as person2, duration
 from Calls_1699)
 
-select person1, person2, count(*) as call_count, sum(duration)
+select person1, person2, count(duration) as call_count, sum(duration)
 from cte
 group by person1, person2
