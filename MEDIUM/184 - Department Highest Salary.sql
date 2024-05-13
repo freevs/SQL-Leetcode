@@ -23,7 +23,7 @@ VALUES
   
 with cte as 
 (select d.Name as dept_name, e.Name as Employee, e.Salary, max(e.salary) over(partition by e.DepartmentId) as max_salary
-from emp_184 e left join dep_184 d on e.DepartmentId = d.id)
+from emp_184 e inner join dep_184 d on e.DepartmentId = d.id)
 
 select dept_name, Employee, Salary from cte where Salary=max_salary
 
