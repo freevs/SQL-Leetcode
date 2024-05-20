@@ -37,20 +37,4 @@ Select product_name, product_id, order_id, order_date
 from cte
 where rnk =1
 order by product_name, product_id, order_id;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   
